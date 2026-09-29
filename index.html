@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#183a1f" />
+  <meta name="description" content="Jam's Japanese Brunchfast — details, menu, and RSVP." />
+  <title>Jam's Japanese Brunchfast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient-grain" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section id="details" class="page active" aria-labelledby="details-tab">
+      <div class="invite-wrap">
+        <img class="invite-card" src="assets/invitation.png" alt="Jam's Japanese Brunchfast invitation details" />
+
+        <div class="animated-title" aria-label="Jam's Japanese Brunchfast">
+          <img class="title-piece title-jams" src="assets/jams.png" alt="Jam's" />
+          <img class="title-piece title-japanese" src="assets/japanese.png" alt="Japanese" />
+          <img class="title-piece title-brunchfast" src="assets/brunchfast.png" alt="Brunchfast" />
+        </div>
+      </div>
+      <p class="swipe-hint">tap below to peek around ♡</p>
+    </section>
+
+    <section id="menu" class="page" aria-labelledby="menu-tab" hidden>
+      <div class="menu-wrap">
+        <img class="menu-card" src="assets/menu.png" alt="Jam's Japanese Brunchfast menu" />
+      </div>
+    </section>
+
+    <section id="rsvp" class="page" aria-labelledby="rsvp-tab" hidden>
+      <div class="rsvp-card">
+        <div class="rsvp-heading">
+          <p class="eyebrow">save me a spot ♡</p>
+          <h1>RSVP</h1>
+          <p class="subhead">let me know if you're coming!</p>
+        </div>
+
+        <!--
+          SETUP: create a free form at https://formspree.io/ and replace YOUR_FORM_ID below.
+          Example: action="https://formspree.io/f/abcdwxyz"
+        -->
+        <form id="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <label>
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="your name" />
+          </label>
+
+          <fieldset>
+            <legend>Are you coming? *</legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="attendance" value="Yes!" required /><span>yes!!</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="Maybe" /><span>maybe</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="Can't make it" /><span>can't make it :(</span></label>
+            </div>
+          </fieldset>
+
+          <label>
+            <span>How many people?</span>
+            <select name="guest_count">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5+">5+</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Dietary restrictions / allergies</span>
+            <textarea name="dietary_notes" rows="3" placeholder="anything I should know?"></textarea>
+          </label>
+
+          <label>
+            <span>Optional note</span>
+            <textarea name="message" rows="3" placeholder="leave me a little note ♡"></textarea>
+          </label>
+
+          <input type="hidden" name="_subject" value="New Jam's Brunchfast RSVP" />
+          <button type="submit">RSVP ♡</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <img class="rsvp-mascot" src="assets/onigiri.png" alt="Cute onigiri character" />
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button id="details-tab" class="nav-tab active" data-target="details" aria-controls="details" aria-selected="true">
+      <span class="nav-icon">✿</span><span>details</span>
+    </button>
+    <button id="menu-tab" class="nav-tab" data-target="menu" aria-controls="menu" aria-selected="false">
+      <span class="nav-icon">♡</span><span>menu</span>
+    </button>
+    <button id="rsvp-tab" class="nav-tab" data-target="rsvp" aria-controls="rsvp" aria-selected="false">
+      <span class="nav-icon">☆</span><span>rsvp</span>
+    </button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
