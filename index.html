@@ -37,16 +37,11 @@
     <section id="rsvp" class="page" aria-labelledby="rsvp-tab" hidden>
       <div class="rsvp-card">
         <div class="rsvp-heading">
-          <p class="eyebrow">save me a spot ♡</p>
           <h1>RSVP</h1>
-          <p class="subhead">let me know if you're coming!</p>
+          <p class="subhead">let us know if you're coming!</p>
         </div>
 
-        <!--
-          SETUP: create a free form at https://formspree.io/ and replace YOUR_FORM_ID below.
-          Example: action="https://formspree.io/f/abcdwxyz"
-        -->
-        <form id="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="rsvp-form">
           <label>
             <span>Name *</span>
             <input type="text" name="name" autocomplete="name" required placeholder="your name" />
@@ -73,13 +68,13 @@
           </label>
 
           <label>
-            <span>Dietary restrictions / allergies</span>
-            <textarea name="dietary_notes" rows="3" placeholder="anything I should know?"></textarea>
+            <span>What are you interested in buying?</span>
+            <textarea name="order" rows="3" placeholder="we want to be prepared!"></textarea>
           </label>
 
           <label>
             <span>Optional note</span>
-            <textarea name="message" rows="3" placeholder="leave me a little note ♡"></textarea>
+            <textarea name="message" rows="3" placeholder="if you want ♡"></textarea>
           </label>
 
           <input type="hidden" name="_subject" value="New Jam's Brunchfast RSVP" />

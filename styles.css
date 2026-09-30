@@ -51,7 +51,7 @@ body::before {
 }
 
 .app-shell {
-  width: min(100%, 520px);
+  width: min(100%, 680px);
   min-height: 100dvh;
   margin: 0 auto;
   padding: max(18px, env(safe-area-inset-top)) 15px calc(105px + env(safe-area-inset-bottom));
@@ -89,14 +89,34 @@ body::before {
 .animated-title {
   position: absolute;
   left: 50%;
-  top: 14.6%;
-  width: 70%;
+  top: 17%;
+  width: 55%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(0px, .2vw, 2px);
+  gap: 0;
   pointer-events: none;
+}
+
+.title-jams {
+  width: 48%;
+  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .10s forwards,
+             floaty 4.8s ease-in-out 1.1s infinite;
+}
+
+.title-japanese {
+  width: 88%;
+  margin-top: -1%;
+  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .26s forwards,
+             floaty 5.2s ease-in-out 1.25s infinite reverse;
+}
+
+.title-brunchfast {
+  width: 92%;
+  margin-top: -3%;
+  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .42s forwards,
+             floaty 5.5s ease-in-out 1.4s infinite;
 }
 
 .title-piece {
@@ -105,26 +125,6 @@ body::before {
   opacity: 0;
   filter: drop-shadow(0 3px 1px rgba(255,255,255,.12));
   transform-origin: center;
-}
-
-.title-jams {
-  width: 54%;
-  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .10s forwards,
-             floaty 4.8s ease-in-out 1.1s infinite;
-}
-
-.title-japanese {
-  width: 92%;
-  margin-top: -1%;
-  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .26s forwards,
-             floaty 5.2s ease-in-out 1.25s infinite reverse;
-}
-
-.title-brunchfast {
-  width: 100%;
-  margin-top: -3%;
-  animation: titlePop .72s cubic-bezier(.2,.8,.2,1.12) .42s forwards,
-             floaty 5.5s ease-in-out 1.4s infinite;
 }
 
 .swipe-hint {
@@ -136,7 +136,11 @@ body::before {
   text-shadow: 0 1px 10px rgba(0,0,0,.4);
 }
 
-.menu-wrap { max-width: 420px; }
+.menu-wrap {
+  width: 100%;
+  max-width: 570px;
+}
+
 .menu-card {
   width: 100%;
   height: auto;
@@ -350,16 +354,38 @@ button[type="submit"]:active { transform: scale(.985); }
 }
 
 @media (max-width: 380px) {
-  .app-shell { padding-left: 10px; padding-right: 10px; }
-  .animated-title { width: 72%; top: 14.7%; }
-  .rsvp-card { padding-left: 20px; padding-right: 20px; }
+  .app-shell {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .animated-title {
+    width: 58%;
+    top: 15.8%;
+  }
+
+  .rsvp-card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media (min-width: 700px) {
-  body { background-attachment: fixed; }
-  .app-shell { padding-top: 34px; }
-  .invite-wrap { max-width: 410px; }
-  .menu-wrap { max-width: 440px; }
+  body {
+    background-attachment: fixed;
+  }
+
+  .app-shell {
+    padding-top: 34px;
+  }
+
+  .invite-wrap {
+    max-width: 410px;
+  }
+
+  .menu-wrap {
+    max-width: 570px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

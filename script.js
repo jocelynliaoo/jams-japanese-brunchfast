@@ -30,33 +30,45 @@ showPage(initial);
 const form = document.querySelector('#rsvp-form');
 const status = document.querySelector('#form-status');
 
+const GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbyoxEZZlqyz7ubz2Zdou3LtWoryL70aa-1ZvWhd6gfyDglQI7KCr1VRKVrznKHh1fUi/exec';
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  if (form.action.includes('YOUR_FORM_ID')) {
-    status.textContent = 'RSVP setup is almost done — add your Formspree form ID first ♡';
-    return;
-  }
-
   const submitButton = form.querySelector('button[type="submit"]');
+
   submitButton.disabled = true;
   submitButton.textContent = 'sending...';
   status.textContent = '';
 
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
+  const formData = new FormData(form);
 
-    if (!response.ok) throw new Error('Submission failed');
+  const data = {
+    name: formData.get('name'),
+    attendance: formData.get('attendance'),
+    guest_count: formData.get('guest_count'),
+    dietary_notes: formData.get('order'),
+    message: formData.get('message')
+  };
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: JSON.stringify(data)
+    });
 
     form.reset();
     status.textContent = 'yay!! see you there ♡';
     submitButton.textContent = 'sent ♡';
+
   } catch (error) {
-    status.textContent = 'hmm, that did not send — try again in a sec!';
+    console.error(error);
+    status.textContent = 'hmm, that did not send — try again!';
     submitButton.textContent = 'RSVP ♡';
   } finally {
     submitButton.disabled = false;
