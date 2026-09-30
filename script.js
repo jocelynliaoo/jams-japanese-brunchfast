@@ -44,22 +44,19 @@ form.addEventListener('submit', async (event) => {
 
   const formData = new FormData(form);
 
-  const data = {
-    name: formData.get('name'),
-    attendance: formData.get('attendance'),
-    guest_count: formData.get('guest_count'),
-    dietary_notes: formData.get('order'),
-    message: formData.get('message')
-  };
+  const data = new URLSearchParams();
+
+  data.append('name', formData.get('name'));
+  data.append('attendance', formData.get('attendance'));
+  data.append('guest_count', formData.get('guest_count'));
+  data.append('order', formData.get('order'));
+  data.append('message', formData.get('message'));
 
   try {
     await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {
-        'Content-Type': 'text/plain'
-      },
-      body: JSON.stringify(data)
+      body: data
     });
 
     form.reset();
